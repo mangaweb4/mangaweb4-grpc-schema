@@ -6,7 +6,6 @@ option go_package = "github.com/mangaweb4/mangaweb4-backend/grpc";
 
 service History {
   rpc List(HistoryListRequest) returns (HistoryListResponse) {}
-  rpc Thumbnail(HistoryThumbnailRequest) returns (HistoryThumbnailResponse) {}
 }
 
 message HistoryListRequest {
@@ -28,11 +27,4 @@ message HistoryListResponseItem {
   int32 PageCount = 5;
   google.protobuf.Timestamp AccessTime = 6;
   bool HasFavoriteTag = 7;
-}
-
-message HistoryThumbnailRequest { string Name = 1; }
-
-message HistoryThumbnailResponse {
-  string ContentType = 1;
-  bytes Data = 2;
 }
