@@ -1,0 +1,94 @@
+syntax = "proto3";
+
+option go_package = "github.com/mangaweb4/mangaweb4-backend/grpc";
+
+service Manga {
+  rpc List(MangaListRequest) returns (MangaListResponse) {}
+  rpc Detail(MangaDetailRequest) returns (MangaDetailResponse) {}
+  rpc Thumbnail(MangaThumbnailRequest) returns (MangaThumbnailResponse) {}
+  rpc SetFavorite(MangaSetFavoriteRequest) returns (MangaSetFavoriteResponse) {}
+  rpc UpdateCover(MangaUpdateCoverRequest) returns (MangaUpdateCoverResponse) {}
+  rpc Page(MangaPageRequest) returns (MangaPageResponse) {}
+}
+
+import "types.proto";
+
+message MangaListRequest {
+  string User = 1;
+  string Tag = 2;
+  mangaweb4.types.Filter Filter = 3;
+  int32 Page = 4;
+  int32 ItemPerPage = 5;
+  string Search = 6;
+  mangaweb4.types.SortField Sort = 7;
+  mangaweb4.types.SortOrder Order = 8;
+}
+
+message MangaListResponse {
+  bool TagFavorite = 1;
+  int32 TotalPage = 2;
+  repeated MangaListResponseItem Items = 3;
+}
+
+message MangaListResponseItem {
+  int32 Id = 1;
+  string Name = 2;
+  bool IsFavorite = 3;
+  bool IsRead = 4;
+  int32 PageCount = 5;
+  bool HasFavoriteTag = 6;
+}
+
+message MangaThumbnailRequest { string Name = 1; }
+
+message MangaThumbnailResponse {
+  string ContentType = 1;
+  bytes Data = 2;
+}
+message MangaDetailRequest {
+  string User = 1;
+  string Name = 2;
+}
+
+message MangaDetailResponse {
+  string Name = 1;
+  bool Favorite = 2;
+  int32 PageCount = 3;
+  int32 CurrentPage = 4;
+  repeated string Tags = 5;
+}
+
+message MangaSetFavoriteRequest {
+  string User = 1;
+  string Name = 2;
+  bool Favorite = 3;
+}
+
+message MangaSetFavoriteResponse {
+  string Name = 1;
+  bool Favorite = 2;
+}
+
+message MangaUpdateCoverRequest {
+  string Name = 1;
+  int32 Index = 2;
+  int32 X = 3;
+  int32 Y = 4;
+  int32 Width = 5;
+  int32 Height = 6;
+}
+
+message MangaUpdateCoverResponse {
+  bool Success = 1;
+}
+
+message MangaPageRequest {
+  string User = 1;
+  string Name = 2;
+  int32 Index = 3;
+}
+
+message MangaPageResponse {
+  string ContentType = 1;
+  bytes Data = 2;
+}
