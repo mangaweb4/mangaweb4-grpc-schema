@@ -8,7 +8,7 @@ service Manga {
   rpc Thumbnail(MangaThumbnailRequest) returns (MangaThumbnailResponse) {}
   rpc SetFavorite(MangaSetFavoriteRequest) returns (MangaSetFavoriteResponse) {}
   rpc UpdateCover(MangaUpdateCoverRequest) returns (MangaUpdateCoverResponse) {}
-  rpc Page(MangaPageRequest) returns (MangaPageResponse) {}
+  rpc PageImage(MangaPageImageRequest) returns (MangaPageImageResponse) {}
 }
 
 import "types.proto";
@@ -55,7 +55,14 @@ message MangaDetailResponse {
   bool Favorite = 2;
   int32 PageCount = 3;
   int32 CurrentPage = 4;
-  repeated string Tags = 5;
+  repeated MangaDetailResponseTagItem Tags = 5;
+}
+
+message MangaDetailResponseTagItem {
+  int32 ID = 1;
+  string Name = 2;
+  bool IsFavorite = 3;
+  bool IsHidden = 4;
 }
 
 message MangaSetFavoriteRequest {
@@ -78,17 +85,17 @@ message MangaUpdateCoverRequest {
   int32 Height = 6;
 }
 
-message MangaUpdateCoverResponse {
-  bool Success = 1;
-}
+message MangaUpdateCoverResponse { bool Success = 1; }
 
-message MangaPageRequest {
+message MangaPageImageRequest {
   string User = 1;
   string Name = 2;
   int32 Index = 3;
+  int32 Width = 4;
+  int32 Height = 5;
 }
 
-message MangaPageResponse {
+message MangaPageImageResponse {
   string ContentType = 1;
   bytes Data = 2;
 }
