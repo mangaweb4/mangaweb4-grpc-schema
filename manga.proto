@@ -2,6 +2,8 @@ syntax = "proto3";
 
 option go_package = "github.com/mangaweb4/mangaweb4-backend/grpc";
 
+import "types.proto";
+
 service Manga {
   rpc List(MangaListRequest) returns (MangaListResponse) {}
   rpc Detail(MangaDetailRequest) returns (MangaDetailResponse) {}
@@ -11,7 +13,7 @@ service Manga {
   rpc PageImage(MangaPageImageRequest) returns (MangaPageImageResponse) {}
 }
 
-import "types.proto";
+
 
 message MangaListRequest {
   string User = 1;
