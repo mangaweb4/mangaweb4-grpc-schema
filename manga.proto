@@ -11,9 +11,9 @@ service Manga {
   rpc SetFavorite(MangaSetFavoriteRequest) returns (MangaSetFavoriteResponse) {}
   rpc UpdateCover(MangaUpdateCoverRequest) returns (MangaUpdateCoverResponse) {}
   rpc PageImage(MangaPageImageRequest) returns (MangaPageImageResponse) {}
+  rpc Repair(MangaRepairRequest) returns (MangaRepairResponse) {}
+  rpc Download(MangaDownloadRequest) returns (stream MangaDownloadResponse) {}
 }
-
-
 
 message MangaListRequest {
   string User = 1;
@@ -100,4 +100,18 @@ message MangaPageImageRequest {
 message MangaPageImageResponse {
   string ContentType = 1;
   bytes Data = 2;
+}
+
+message MangaRepairRequest { string Name = 1; }
+
+message MangaRepairResponse {
+  string Name = 1;
+  bool IsSuccess = 2;
+}
+message MangaDownloadRequest { string Name = 1; }
+message MangaDownloadResponse {
+  string Filename = 1;
+  string ContentType = 2;
+  bytes Data = 3;
+  int32 Size = 4;
 }
