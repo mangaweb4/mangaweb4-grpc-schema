@@ -10,8 +10,10 @@ service Tag {
 }
 
 message TagListRequest {
+  reserved 2;
+
   string User = 1;
-  string Tag = 2;
+
   mangaweb4.types.Filter Filter = 3;
   int32 Page = 4;
   int32 ItemPerPage = 5;
