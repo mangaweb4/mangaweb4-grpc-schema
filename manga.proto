@@ -39,6 +39,8 @@ message MangaListResponseItem {
   bool IsRead = 4;
   int32 PageCount = 5;
   bool HasFavoriteTag = 6;
+  int32 CurrentPage = 7;
+  int32 MaxProgress = 8;
 }
 
 message MangaThumbnailRequest { string Name = 1; }
