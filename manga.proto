@@ -9,6 +9,7 @@ service Manga {
   rpc Detail(MangaDetailRequest) returns (MangaDetailResponse) {}
   rpc Thumbnail(MangaThumbnailRequest) returns (MangaThumbnailResponse) {}
   rpc SetFavorite(MangaSetFavoriteRequest) returns (MangaSetFavoriteResponse) {}
+  rpc SetProgress(MangaSetProgressRequest) returns (MangaSetProgressResponse) {}
   rpc UpdateCover(MangaUpdateCoverRequest) returns (MangaUpdateCoverResponse) {}
   rpc PageImage(MangaPageImageRequest) returns (MangaPageImageResponse) {
     option deprecated = true;
@@ -82,6 +83,19 @@ message MangaSetFavoriteRequest {
 message MangaSetFavoriteResponse {
   string Name = 1;
   bool Favorite = 2;
+}
+
+message MangaSetProgressRequest {
+  string User = 1;
+  string Name = 2;
+  int32 Page = 3;
+}
+
+message MangaSetProgressResponse {
+  string User = 1;
+  string Name = 2;
+  int32 Page = 3;
+  bool Succeed = 4;
 }
 
 message MangaUpdateCoverRequest {
