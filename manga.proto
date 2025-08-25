@@ -22,7 +22,7 @@ service Manga {
 
 message MangaListRequest {
   string User = 1;
-  
+
   mangaweb4.types.Filter Filter = 3;
   int32 Page = 4;
   int32 ItemPerPage = 5;
@@ -40,6 +40,8 @@ message MangaListResponse {
   bool TagFavorite = 1;
   int32 TotalPage = 2;
   repeated MangaListResponseItem Items = 3;
+  
+  bool SerieFavorite = 4;
 }
 
 message MangaListResponseItem {
