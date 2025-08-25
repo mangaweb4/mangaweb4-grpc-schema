@@ -22,13 +22,18 @@ service Manga {
 
 message MangaListRequest {
   string User = 1;
-  string Tag = 2;
+  
   mangaweb4.types.Filter Filter = 3;
   int32 Page = 4;
   int32 ItemPerPage = 5;
   string Search = 6;
   mangaweb4.types.SortField Sort = 7;
   mangaweb4.types.SortOrder Order = 8;
+
+  oneof BrowseType {
+    string Tag = 2;
+    string Serie = 9;
+  }
 }
 
 message MangaListResponse {
