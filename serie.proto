@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+option go_package = "github.com/mangaweb4/mangaweb4-backend/grpc";
+import "types.proto";
+
+service Serie {
+  rpc List(SerieListRequest) returns (SerieListResponse) {}
+  rpc Thumbnail(SerieThumbnailRequest) returns (SerieThumbnailResponse) {}
+  rpc SetFavorite(SerieSetFavoriteRequest) returns (SerieSetFavoriteResponse) {}
+}
+
+message SerieListRequest {
+  string User = 1;
+  mangaweb4.types.Filter Filter = 2;
+  int32 Page = 3;
+  int32 ItemPerPage = 4;
+  mangaweb4.types.SortField Sort = 5;
+  mangaweb4.types.SortOrder Order = 6;
+}
+
+message SerieListResponse {
+  bool SerieFavorite = 1;
+  int32 TotalPage = 2;
+  repeated SerieListResponseItem Items = 3;
+}
+
+message SerieListResponseItem {
+  int32 Id = 1;
+  string Name = 2;
+  bool IsFavorite = 3;
+  bool IsRead = 4;
+  int32 PageCount = 5;
+  bool HasFavoriteSerie = 6;
+}
+
+message SerieThumbnailRequest { string Name = 1; }
+
+message SerieThumbnailResponse {
+  string ContentType = 1;
+  bytes Data = 2;
+}
+
+message SerieSetFavoriteRequest {
+  string User = 1;
+  string Serie = 2;
+  bool Favorite = 3;
+}
+
+message SerieSetFavoriteResponse {
+  string Serie = 1;
+  bool Favorite = 2;
+}

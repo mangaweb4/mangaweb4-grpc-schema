@@ -7,6 +7,7 @@ enum Filter {
   FILTER_UNKNOWN = 0;
   FILTER_FAVORITE_ITEMS = 1;
   FILTER_FAVORITE_TAGS = 2;
+  FILTER_FAVORITE_SERIE = 3;
 }
 
 enum SortField {
@@ -14,6 +15,7 @@ enum SortField {
   SORT_FIELD_CREATION_TIME = 1;
   SORT_FIELD_PAGECOUNT = 2;
   SORT_FIELD_ITEMCOUNT = 3;
+  SORT_FIELD_UPDATE_TIME = 4;
 }
 
 enum SortOrder {
