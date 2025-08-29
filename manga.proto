@@ -105,13 +105,13 @@ message MangaSetProgressResponse {
 }
 
 message MangaUpdateCoverRequest {
-  string Name = 1;
+  string Name = 1  [ deprecated = true ];
   int32 Index = 2;
   int32 X = 3;
   int32 Y = 4;
   int32 Width = 5;
   int32 Height = 6;
-  int32 Id = 7 [ deprecated = true ];
+  int32 Id = 7;
 }
 
 message MangaUpdateCoverResponse { bool Success = 1; }
