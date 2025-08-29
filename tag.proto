@@ -37,7 +37,10 @@ message TagListResponseItem {
   bool HasFavoriteTag = 6;
 }
 
-message TagThumbnailRequest { string Name = 1; }
+message TagThumbnailRequest {
+  string Name = 1 [ deprecated = true ];
+  int32 Id = 2;
+}
 
 message TagThumbnailResponse {
   string ContentType = 1;
@@ -46,8 +49,9 @@ message TagThumbnailResponse {
 
 message TagSetFavoriteRequest {
   string User = 1;
-  string Tag = 2;
+  string Tag = 2 [ deprecated = true ];
   bool Favorite = 3;
+  int32 Id = 4;
 }
 
 message TagSetFavoriteResponse {
