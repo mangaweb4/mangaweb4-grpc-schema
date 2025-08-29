@@ -38,7 +38,7 @@ message MangaListResponse {
 }
 
 message MangaListResponseItem {
-  int32 Id = 1;
+  int32 ID = 1;
   string Name = 2;
   bool IsFavorite = 3;
   bool IsRead = 4;
@@ -48,7 +48,10 @@ message MangaListResponseItem {
   int32 MaxProgress = 8;
 }
 
-message MangaThumbnailRequest { string Name = 1; }
+message MangaThumbnailRequest {
+  string Name = 1 [ deprecated = true ];
+  int32 ID = 2;
+}
 
 message MangaThumbnailResponse {
   string ContentType = 1;
@@ -56,7 +59,8 @@ message MangaThumbnailResponse {
 }
 message MangaDetailRequest {
   string User = 1;
-  string Name = 2;
+  string Name = 2 [ deprecated = true ];
+  int32 ID = 3;
 }
 
 message MangaDetailResponse {
@@ -76,8 +80,9 @@ message MangaDetailResponseTagItem {
 
 message MangaSetFavoriteRequest {
   string User = 1;
-  string Name = 2;
+  string Name = 2 [ deprecated = true ];
   bool Favorite = 3;
+  int32 ID = 4;
 }
 
 message MangaSetFavoriteResponse {
@@ -87,8 +92,9 @@ message MangaSetFavoriteResponse {
 
 message MangaSetProgressRequest {
   string User = 1;
-  string Name = 2;
+  string Name = 2 [ deprecated = true ];
   int32 Page = 3;
+  int32 ID = 4;
 }
 
 message MangaSetProgressResponse {
@@ -105,16 +111,18 @@ message MangaUpdateCoverRequest {
   int32 Y = 4;
   int32 Width = 5;
   int32 Height = 6;
+  int32 ID = 7 [ deprecated = true ];
 }
 
 message MangaUpdateCoverResponse { bool Success = 1; }
 
 message MangaPageImageRequest {
   string User = 1;
-  string Name = 2;
+  string Name = 2 [ deprecated = true ];
   int32 Index = 3;
   int32 Width = 4;
   int32 Height = 5;
+  int32 ID = 6;
 }
 
 message MangaPageImageResponse {
@@ -132,10 +140,15 @@ message MangaPageImageStreamResponse {
 message MangaRepairRequest { string Name = 1; }
 
 message MangaRepairResponse {
-  string Name = 1;
+  string Name = 1 [ deprecated = true ];
   bool IsSuccess = 2;
+  int32 ID = 3;
 }
-message MangaDownloadRequest { string Name = 1; }
+message MangaDownloadRequest {
+  string Name = 1 [ deprecated = true ];
+  int32 ID = 2;
+}
+
 message MangaDownloadResponse {
   string Filename = 1;
   string ContentType = 2;
