@@ -137,12 +137,14 @@ message MangaPageImageStreamResponse {
   int32 Size = 4;
 }
 
-message MangaRepairRequest { string Name = 1; }
+message MangaRepairRequest {
+  string Name = 1 [ deprecated = true ];
+  int32 ID = 3;
+}
 
 message MangaRepairResponse {
-  string Name = 1 [ deprecated = true ];
+  string Name = 1;
   bool IsSuccess = 2;
-  int32 ID = 3;
 }
 message MangaDownloadRequest {
   string Name = 1 [ deprecated = true ];
