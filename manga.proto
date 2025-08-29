@@ -38,7 +38,7 @@ message MangaListResponse {
 }
 
 message MangaListResponseItem {
-  int32 ID = 1;
+  int32 Id = 1;
   string Name = 2;
   bool IsFavorite = 3;
   bool IsRead = 4;
@@ -50,7 +50,7 @@ message MangaListResponseItem {
 
 message MangaThumbnailRequest {
   string Name = 1 [ deprecated = true ];
-  int32 ID = 2;
+  int32 Id = 2;
 }
 
 message MangaThumbnailResponse {
@@ -60,7 +60,7 @@ message MangaThumbnailResponse {
 message MangaDetailRequest {
   string User = 1;
   string Name = 2 [ deprecated = true ];
-  int32 ID = 3;
+  int32 Id = 3;
 }
 
 message MangaDetailResponse {
@@ -72,7 +72,7 @@ message MangaDetailResponse {
 }
 
 message MangaDetailResponseTagItem {
-  int32 ID = 1;
+  int32 Id = 1;
   string Name = 2;
   bool IsFavorite = 3;
   bool IsHidden = 4;
@@ -82,7 +82,7 @@ message MangaSetFavoriteRequest {
   string User = 1;
   string Name = 2 [ deprecated = true ];
   bool Favorite = 3;
-  int32 ID = 4;
+  int32 Id = 4;
 }
 
 message MangaSetFavoriteResponse {
@@ -94,7 +94,7 @@ message MangaSetProgressRequest {
   string User = 1;
   string Name = 2 [ deprecated = true ];
   int32 Page = 3;
-  int32 ID = 4;
+  int32 Id = 4;
 }
 
 message MangaSetProgressResponse {
@@ -111,7 +111,7 @@ message MangaUpdateCoverRequest {
   int32 Y = 4;
   int32 Width = 5;
   int32 Height = 6;
-  int32 ID = 7 [ deprecated = true ];
+  int32 Id = 7 [ deprecated = true ];
 }
 
 message MangaUpdateCoverResponse { bool Success = 1; }
@@ -122,7 +122,7 @@ message MangaPageImageRequest {
   int32 Index = 3;
   int32 Width = 4;
   int32 Height = 5;
-  int32 ID = 6;
+  int32 Id = 6;
 }
 
 message MangaPageImageResponse {
@@ -139,7 +139,7 @@ message MangaPageImageStreamResponse {
 
 message MangaRepairRequest {
   string Name = 1 [ deprecated = true ];
-  int32 ID = 3;
+  int32 Id = 3;
 }
 
 message MangaRepairResponse {
@@ -148,7 +148,7 @@ message MangaRepairResponse {
 }
 message MangaDownloadRequest {
   string Name = 1 [ deprecated = true ];
-  int32 ID = 2;
+  int32 Id = 2;
 }
 
 message MangaDownloadResponse {
