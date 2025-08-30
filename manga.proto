@@ -22,7 +22,7 @@ service Manga {
 
 message MangaListRequest {
   string User = 1;
-  string Tag = 2;
+  reserved 2;
   mangaweb4.types.Filter Filter = 3;
   int32 Page = 4;
   int32 ItemPerPage = 5;
@@ -32,7 +32,7 @@ message MangaListRequest {
 }
 
 message MangaListResponse {
-  bool TagFavorite = 1;
+  reserved 1;
   int32 TotalPage = 2;
   repeated MangaListResponseItem Items = 3;
 }
@@ -48,7 +48,10 @@ message MangaListResponseItem {
   int32 MaxProgress = 8;
 }
 
-message MangaThumbnailRequest { string Name = 1; }
+message MangaThumbnailRequest {
+  reserved 1;
+  int32 Id = 2;
+}
 
 message MangaThumbnailResponse {
   string ContentType = 1;
@@ -56,7 +59,8 @@ message MangaThumbnailResponse {
 }
 message MangaDetailRequest {
   string User = 1;
-  string Name = 2;
+  reserved 2;
+  int32 Id = 3;
 }
 
 message MangaDetailResponse {
@@ -68,7 +72,7 @@ message MangaDetailResponse {
 }
 
 message MangaDetailResponseTagItem {
-  int32 ID = 1;
+  int32 Id = 1;
   string Name = 2;
   bool IsFavorite = 3;
   bool IsHidden = 4;
@@ -76,8 +80,9 @@ message MangaDetailResponseTagItem {
 
 message MangaSetFavoriteRequest {
   string User = 1;
-  string Name = 2;
+  reserved 2;
   bool Favorite = 3;
+  int32 Id = 4;
 }
 
 message MangaSetFavoriteResponse {
@@ -87,8 +92,9 @@ message MangaSetFavoriteResponse {
 
 message MangaSetProgressRequest {
   string User = 1;
-  string Name = 2;
+  reserved 2;
   int32 Page = 3;
+  int32 Id = 4;
 }
 
 message MangaSetProgressResponse {
@@ -99,22 +105,24 @@ message MangaSetProgressResponse {
 }
 
 message MangaUpdateCoverRequest {
-  string Name = 1;
+  reserved 1;
   int32 Index = 2;
   int32 X = 3;
   int32 Y = 4;
   int32 Width = 5;
   int32 Height = 6;
+  int32 Id = 7;
 }
 
 message MangaUpdateCoverResponse { bool Success = 1; }
 
 message MangaPageImageRequest {
   string User = 1;
-  string Name = 2;
+  reserved 2;
   int32 Index = 3;
   int32 Width = 4;
   int32 Height = 5;
+  int32 Id = 6;
 }
 
 message MangaPageImageResponse {
@@ -129,13 +137,20 @@ message MangaPageImageStreamResponse {
   int32 Size = 4;
 }
 
-message MangaRepairRequest { string Name = 1; }
+message MangaRepairRequest {
+  reserved 1;
+  int32 Id = 3;
+}
 
 message MangaRepairResponse {
   string Name = 1;
   bool IsSuccess = 2;
 }
-message MangaDownloadRequest { string Name = 1; }
+message MangaDownloadRequest {
+  reserved 1;
+  int32 Id = 2;
+}
+
 message MangaDownloadResponse {
   string Filename = 1;
   string ContentType = 2;
