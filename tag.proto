@@ -11,10 +11,8 @@ service Tag {
 }
 
 message TagListRequest {
-  reserved 2;
-
   string User = 1;
-  /* reserved = 2 */
+  reserved 2;
   mangaweb4.types.Filter Filter = 3;
   int32 Page = 4;
   int32 ItemPerPage = 5;
@@ -68,7 +66,7 @@ message TagListResponseItem {
 }
 
 message TagThumbnailRequest {
-  string Name = 1 [ deprecated = true ];
+  reserved 1;
   int32 Id = 2;
 }
 
@@ -79,7 +77,7 @@ message TagThumbnailResponse {
 
 message TagSetFavoriteRequest {
   string User = 1;
-  string Tag = 2 [ deprecated = true ];
+  reserved 2;
   bool Favorite = 3;
   int32 Id = 4;
 }
