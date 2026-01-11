@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-option go_package = "github.com/mangaweb4/mangaweb4-backend/grpc";
-
 import "types.proto";
+
+option go_package = "github.com/mangaweb4/mangaweb4-backend/grpc";
 
 service Manga {
   rpc List(MangaListRequest) returns (MangaListResponse) {}
@@ -14,8 +14,7 @@ service Manga {
   rpc PageImage(MangaPageImageRequest) returns (MangaPageImageResponse) {
     option deprecated = true;
   }
-  rpc PageImageStream(MangaPageImageRequest)
-      returns (stream MangaPageImageStreamResponse) {}
+  rpc PageImageStream(MangaPageImageRequest) returns (stream MangaPageImageStreamResponse) {}
   rpc Repair(MangaRepairRequest) returns (MangaRepairResponse) {}
   rpc Download(MangaDownloadRequest) returns (stream MangaDownloadResponse) {}
 }
@@ -114,15 +113,18 @@ message MangaUpdateCoverRequest {
   int32 Id = 7;
 }
 
-message MangaUpdateCoverResponse { bool Success = 1; }
+message MangaUpdateCoverResponse {
+  bool Success = 1;
+}
 
 message MangaPageImageRequest {
   string User = 1;
   reserved 2;
   int32 Index = 3;
-  int32 Width = 4;
-  int32 Height = 5;
+  reserved 4;
+  reserved 5;
   int32 Id = 6;
+  mangaweb4.types.ImageQuality Quality = 7;
 }
 
 message MangaPageImageResponse {

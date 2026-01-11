@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 package mangaweb4.types;
+
 option go_package = "github.com/mangaweb4/mangaweb4-backend/grpc";
 
 enum Filter {
@@ -20,4 +21,10 @@ enum SortField {
 enum SortOrder {
   SORT_ORDER_ASCENDING = 0;
   SORT_ORDER_DESCENDING = 1;
+}
+
+enum ImageQuality {
+  IMAGE_QUALITY_UNSPECIFIED = 0;
+  IMAGE_QUALITY_LOW = 1;
+  IMAGE_QUALITY_HIGH = 2;
 }
